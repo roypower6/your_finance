@@ -32,6 +32,9 @@ class SettingScreen extends StatelessWidget {
                   ),
                 ],
               ),
+              const SizedBox(
+                height: 10,
+              ),
               ListTile(
                 leading: const Icon(Icons.info, color: Colors.blue),
                 title: const Text(

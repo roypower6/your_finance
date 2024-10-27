@@ -32,6 +32,7 @@ class _FinanceHomePageState extends State<HomeScreen> {
       backgroundColor: const Color(0xffF8F5F1),
       body: _screens[_currentIndex], // 선택된 화면 표시
       bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: Colors.grey,
         backgroundColor: const Color(0xffF8F5F1),
         selectedItemColor: const Color(0xff5AA897),
         selectedLabelStyle: const TextStyle(
