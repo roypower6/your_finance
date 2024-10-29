@@ -37,7 +37,11 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
   }
 
   // 검색 이력 저장
-  Future<void> _saveSearchHistory() async {
+  Future<void> _saveSearchHistory(DictModel result) async {
+    // 중복된 결과는 제거
+    _searchHistory.removeWhere((item) => item.word == result.word);
+    _searchHistory.insert(0, result);
+
     final historyJson =
         _searchHistory.map((item) => json.encode(item.toJson())).toList();
     await prefs.setStringList('search_history', historyJson);
@@ -63,7 +67,6 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
       setState(() {
         if (results.isNotEmpty) {
           _currentSearchResult = results;
-          _addToSearchHistory(results);
         } else {
           _currentSearchResult = null;
           ScaffoldMessenger.of(context).showSnackBar(
@@ -92,20 +95,25 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
     }
   }
 
-  void _addToSearchHistory(List<DictModel> results) {
-    setState(() {
-      for (var result in results) {
-        _searchHistory.removeWhere((item) => item.word == result.word);
-        _searchHistory.insert(0, result);
-      }
-    });
-    _saveSearchHistory();
+  void _handleItemClick(DictModel result) {
+    // 사용자가 클릭한 항목만 검색 이력에 추가
+    _saveSearchHistory(result);
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ExplanationScreen(
+          word: result.word,
+          content: result.content,
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF8F5F1),
+      backgroundColor: const Color(0xFFF8F9FA),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -248,15 +256,7 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
                               ),
                             ),
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ExplanationScreen(
-                                    word: result.word,
-                                    content: result.content,
-                                  ),
-                                ),
-                              );
+                              _handleItemClick(result);
                             },
                           );
                         },

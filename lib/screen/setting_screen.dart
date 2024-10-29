@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:your_finance/screen/setting_screen_folder/app_info_screen.dart';
-import 'package:your_finance/screen/setting_screen_folder/app_setting_screen.dart';
-import 'package:your_finance/screen/setting_screen_folder/developer_info_screen.dart';
 
 // Main SettingScreen with navigation to each specific screen
 class SettingScreen extends StatelessWidget {
@@ -10,13 +7,13 @@ class SettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF8F5F1),
+      backgroundColor: const Color(0xFFF8F9FA),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: ListView(
-            children: [
-              const Row(
+            children: const [
+              Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(
@@ -32,49 +29,25 @@ class SettingScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(
+              SizedBox(
                 height: 10,
               ),
               ListTile(
-                leading: const Icon(Icons.info, color: Colors.blue),
-                title: const Text(
-                  '앱 정보',
+                leading: Icon(Icons.info, color: Colors.blue),
+                title: Text(
+                  '앱 버전',
                 ),
-                trailing: const Icon(Icons.arrow_forward_ios),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AppInfoScreen(),
-                    ),
-                  );
-                },
+                subtitle: Text('1.0.0'),
               ),
               ListTile(
-                leading: const Icon(Icons.settings, color: Colors.green),
-                title: const Text('앱 설정'),
-                trailing: const Icon(Icons.arrow_forward_ios),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AppSettingsScreen(),
-                    ),
-                  );
-                },
+                leading: Icon(Icons.email, color: Colors.red),
+                title: Text('개발자 이메일'),
+                subtitle: Text('roy040707@gmail.com'),
               ),
               ListTile(
-                leading: const Icon(Icons.person, color: Colors.purple),
-                title: const Text('개발자 정보'),
-                trailing: const Icon(Icons.arrow_forward_ios),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const DeveloperInfoScreen(),
-                    ),
-                  );
-                },
+                leading: Icon(Icons.person, color: Colors.green),
+                title: Text('개발자'),
+                subtitle: Text('Rhee Seung gi'),
               ),
             ],
           ),
