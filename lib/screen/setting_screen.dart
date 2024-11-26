@@ -7,7 +7,6 @@ class SettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F9FA),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -37,7 +36,7 @@ class SettingScreen extends StatelessWidget {
                 title: Text(
                   '앱 버전',
                 ),
-                subtitle: Text('1.0.0'),
+                subtitle: Text('1.0.2'),
               ),
               ListTile(
                 leading: Icon(Icons.email, color: Colors.red),

@@ -13,9 +13,21 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData(
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: Color(0xFFF8F9FA),
+        ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFFF8F9FA),
+        ),
+        scaffoldBackgroundColor: const Color(0xFFF8F9FA),
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: const Color(0xFFF8F9FA),
+        ),
+      ),
       title: 'Your Finance',
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }

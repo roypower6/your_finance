@@ -13,7 +13,6 @@ class ExplanationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF8F5F1),
       appBar: AppBar(
         title: Text(
           word,
@@ -21,7 +20,6 @@ class ExplanationScreen extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
         ),
-        backgroundColor: const Color(0xffF8F5F1),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
